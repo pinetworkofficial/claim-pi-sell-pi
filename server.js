@@ -15,6 +15,11 @@ mongoose.connect(MONGODB_URI, {
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.log('Error connecting to MongoDB:', err));
 
+app.get('/', (req, res) => {
+    res.send('Welcome to the PI Rewards Server!');
+});
+
+
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
