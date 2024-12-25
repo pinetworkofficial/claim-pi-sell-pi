@@ -1,0 +1,327 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: white;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Exchange rate and USD calculation styling */
+.exchange-rate {
+    font-size: 14px;
+    color: #fff;
+    margin-top: 5px;
+    font-style: italic;
+    text-align: center;
+}
+
+#exchange-rate-text {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.popup-content textarea {
+    width: 100%;
+    height: 100px;
+    /* Increased height for accommodating 24 words */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    /* Prevent resizing for consistent design */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+
+/* Specific Styling for Reward Popup */
+#reward-popup .popup-content {
+    background: linear-gradient(135deg, #7b3c99, #7b3c99); /* Green gradient for Reward */
+}
+#reward-popup button {
+    background-color: #7b3c99;
+}
+#reward-popup button:hover {
+    background-color: #7b3c99;
+}
+
+
+/* Header Styling */
+header {
+    background-color: #7b3c99;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+}
+
+.logo-container {
+    display: inline-block;
+}
+
+.small-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+/* Welcome Section */
+.welcome {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.welcome .logo img {
+    width: 80px;
+    height: 80px;
+}
+
+.welcome h2 {
+    margin-top: 10px;
+    color: #7b3c99;
+    font-size: 20px;
+}
+
+/* Grid Menu */
+.grid-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.grid-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+.grid-item img {
+    width: 60px;
+    height: 60px;
+}
+
+.grid-item p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #7b3c99;
+}
+
+/* Popup Window Styling */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark semi-transparent background */
+    z-index: 1000;
+}
+
+.popup-content {
+    position: relative;
+    background: linear-gradient(135deg, #7b3c99, #ab68d4);
+    /* Gradient background */
+    color: white;
+    width: 90%;
+    /* Adjusted for mobile responsiveness */
+    max-width: 400px;
+    /* Maximum width for desktop */
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 15px;
+    /* Smooth rounded corners */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    /* Fancy shadow */
+    animation: popup-show 0.4s ease-in-out;
+    /* Animation for popup */
+    font-family: Arial, sans-serif;
+}
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #fff;
+    color: #7b3c99;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+    background-color: #f1f1f1;
+}
+
+
+
+
+/* Input Fields Styling */
+.popup-content input,
+.popup-content textarea,
+.popup-content select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: #333;
+}
+
+.popup-content textarea {
+    height: 120px;
+    /* Larger for better visibility */
+}
+
+.popup-content button {
+    background-color: #7b3c99;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content button:hover {
+    transform: scale(1.05);
+    background-color: #eaeaea;
+}
+
+/* Animation for Popup */
+@keyframes popup-show {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+
+/* Button Styling */
+button {
+    background-color: #7b3c99;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5e2d74;
+}
+
+/* Center the "Explore the Ecosystem" Button */
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.explore-btn {
+    display: inline-block;
+    background-color: #7b3c99;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.explore-btn:hover {
+    background-color: #5e2d74;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 18px;
+    }
+    .grid-menu {
+        grid-template-columns: repeat(3, 1fr);  /* Keep 3 columns on mobile */
+        gap: 15px;
+    }
+
+    .popup-content {
+        width: 80%;
+        max-width: 350px;
+    }
+
+    .grid-item img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+    .popup-content {
+        width: 80%;
+        /* Make the popup slightly smaller on mobile */
+        max-width: 350px;
+    }
+
+    .grid-item img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .popup-content {
+        width: 90%;
+        /* Smaller width for very small screens */
+    }
+
+    header h1 {
+        font-size: 16px;
+    }
+
+    .grid-item img {
+        width: 40px;
+        height: 40px;
+    }
+}
