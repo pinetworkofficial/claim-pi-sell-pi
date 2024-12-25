@@ -19,10 +19,8 @@ mongoose.connect(MONGODB_URI, {
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB Schema
 const saleSchema = new mongoose.Schema({
