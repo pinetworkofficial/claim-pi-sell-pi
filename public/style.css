@@ -133,36 +133,32 @@ header h1 {
 
 /* Popup Window Styling */
 .popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Dark semi-transparent background */
-    z-index: 1000;
-}
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
 
 .popup-content {
-    position: relative;
-    background: linear-gradient(135deg, #7b3c99, #ab68d4);
-    /* Gradient background */
-    color: white;
-    width: 90%;
-    /* Adjusted for mobile responsiveness */
-    max-width: 400px;
-    /* Maximum width for desktop */
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 15px;
-    /* Smooth rounded corners */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-    /* Fancy shadow */
-    animation: popup-show 0.4s ease-in-out;
-    /* Animation for popup */
-    font-family: Arial, sans-serif;
-}
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 400px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centers child elements horizontally */
+        justify-content: center; /* Centers child elements vertically */
+        text-align: center;
+    }
 
 /* Close Button Styling */
 .close-btn {
