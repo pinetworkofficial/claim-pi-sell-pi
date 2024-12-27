@@ -51,10 +51,10 @@ body {
     background: linear-gradient(135deg, #7b3c99, #7b3c99); /* Green gradient for Reward */
 }
 #reward-popup button {
-    background-color: #7b3c99;
+    background-color: #FFD580;
 }
 #reward-popup button:hover {
-    background-color: #7b3c99;
+    background-color: #FFD580;
 }
 
 
